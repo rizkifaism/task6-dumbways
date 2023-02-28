@@ -5,8 +5,8 @@ let datas = [];
 
 btnProject.addEventListener("click", function (e) {
   const pronam = document.querySelector("#pronam").value;
-  const stadat = document.querySelector("#stadat").value;
-  const enddat = document.querySelector("#enddat").value;
+  const startDate = document.querySelector("#stadat").value;
+  const endDate = document.querySelector("#enddat").value;
   const desc = document.querySelector("#desc").value;
   let nodejs = document.querySelector("#nodejs");
   let reactjs = document.querySelector("#reactjs");
@@ -32,8 +32,8 @@ btnProject.addEventListener("click", function (e) {
 
   let data = {
     pronam,
-    stadat,
-    enddat,
+    startDate,
+    endDate,
     desc,
     nodejs: nodejs.checked == true ? true : false,
     reactjs: reactjs.checked == true ? true : false,
@@ -56,7 +56,7 @@ const showData = () => {
       <img src="${datas[i].image}" alt="" class="card-avatar" />
     </a>
     <h3>${datas[i].pronam}</h3>
-    <p class="duration">durasi: ${getDuration(datas[i].stadat, datas[i].enddat)}</p>
+    <p class="duration">durasi: ${getDuration(datas[i].startDate, datas[i].endDate)}</p>
     <p>${datas[i].desc}</p>
     <div class="tech-logo">
       ${datas[i].nodejs ? '<img src="assets/image/nodejs.png" alt="" />' : ""}
@@ -74,10 +74,10 @@ const showData = () => {
 
 const getDuration = (start, end) => {
   const miliSecond = 1000;
-  const staDat = new Date(start);
-  const endDat = new Date(end);
+  const dateStart = new Date(start);
+  const dateEnd = new Date(end);
 
-  const distance = endDat - staDat;
+  const distance = dateEnd - dateStart;
   const monthDistance = Math.floor(distance / (30 * 24 * 60 * 60 * miliSecond));
   if (monthDistance > 0) {
     return monthDistance + " bulan";
